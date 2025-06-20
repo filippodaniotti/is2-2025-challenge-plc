@@ -1,0 +1,32 @@
+global:
+  sr: 44100
+  packet_dim: 512
+  extra_pred_dim: 256
+  n_corrupted_packets: 2
+
+path:
+  source_audio_dir: "path/to/source/audio/dir"
+  meta: "path/to/meta"
+  surrogate_model_checkpoint: "path/to/surrogate/model/checkpoint"
+
+AR:
+  ar_order: 256
+  diagonal_load: 0.001
+  ar_context_dim: 8
+  fade_dim: 8
+
+neural_net:
+  lite: true
+  steps_per_epoch: 500
+  gradient_clip: 2.0
+  max_epochs: 500
+  batch_size: 128
+  nn_context_dim: 8
+  fade_dim: 64
+
+inference:
+  meta: "example_test_set/meta.txt"
+  lossy_audio_dir: "example_test_set/lossy"
+  traces_dir: "example_test_set/traces"
+  enhanced_audio_dir: "example_test_set/enhanced"
+  model_checkpoint: "path/to/checkpoint"
